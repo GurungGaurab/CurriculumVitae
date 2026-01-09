@@ -1,0 +1,138 @@
+.wave-hand {
+    display: inline-block;
+            /* Adjust size as needed */
+            animation: wave 1s infinite; /* Apply the animation */
+ }
+
+@keyframes wave {
+            0% {
+                transform: rotate(0deg); /* Starting position */
+            }
+            50% {
+                transform: rotate(15deg); /* Waving position */
+            }
+            100% {
+                transform: rotate(0deg); /* Back to starting position */
+            }
+        }
+
+
+:root{
+ --font-color:#E0E0E0;
+ --background-color: #000D21;
+
+}
+
+.lightmode{
+ --font-color:#000D21;
+ --background-color: #E0E0E0;
+}
+
+
+body{
+    background-color: var(--background-color);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#image{
+    margin-top: 20px;
+    height: 150px;
+  width: 150px;
+    border-radius: 50%;
+    
+}
+
+#main{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    font-size: 45px;
+    width: 400px
+}
+
+.me{
+    margin-top: -30px;
+    font-size: 25px;
+    margin-right: 300px;
+}
+
+.contact-info{
+    margin-top: -10px;
+    font-size: 20px;
+    margin-right: 200px;
+}
+
+p{
+    padding: 5px;
+    margin: 0px;
+}
+
+.container{
+    margin-top: 20px;
+    width:400px;
+    height: 100px;
+    border: 2px solid white;
+    margin-right: 150px;
+}
+
+#theme-switch{
+    height: 50px;
+    width: 50px;
+    padding: 0px;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top:20px;
+    right: 20px; 
+}
+
+#theme-switch svg{
+    fill: var(--font-color);
+}
+
+#theme-switch svg:first-child{
+    display: none;
+}
+
+.lightmode #theme-switch svg:last-child{
+    display: none;
+}
+
+.lightmode #theme-switch svg:first-child{
+    display: block;
+}
+
+#clickable{
+    cursor: pointer;
+    color: purple;
+    text-decoration: underline;
+}
+#verify{
+   font-size: 20px;
+   display: none;
+}
+
+#hkid-check{
+    display: none;
+}
+
+.About-me{
+    margin-right: 430px;
+     font-size: 20px;
+}
+
+
+
+
+
