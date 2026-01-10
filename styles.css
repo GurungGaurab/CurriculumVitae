@@ -1,4 +1,4 @@
-* {
+* { /* everything */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,12 +9,12 @@
   --background-color: #000D21;
 }
 
-.lightmode {
+.lightmode { /* color */
   --font-color: #000D21;
   --background-color: #E0E0E0;
 }
 
-body {
+body { 
   background-color: var(--background-color);
   color: var(--font-color);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
@@ -42,7 +42,7 @@ body {
   animation: wave 2.4s infinite ease-in-out;
 }
 
-@keyframes wave {
+@keyframes wave { /* wave animation */
   0%   { transform: rotate(0deg); }
   10%  { transform: rotate(14deg); }
   20%  { transform: rotate(-8deg); }
@@ -52,11 +52,11 @@ body {
   60%  { transform: rotate(0deg); } 
   100% { transform: rotate(0deg); }
 }
-.about-me h2 {
+.about-me h2 { 
     text-align: left;
       
 }
-main, #main {
+main, #main, .job-item{
   margin-top: 1.8rem;
   display: flex;
   flex-direction: column;
@@ -73,7 +73,8 @@ h1 {
   font-size: clamp(2.2rem, 9vw, 3.6rem);
   margin-bottom: 0.5rem;
   line-height: 1.1;
-  word-break: break-word;        
+  word-break: break-word;  
+  margin-top: 1em;      
 }
 
 .me,
@@ -85,11 +86,19 @@ h1 {
 }
 
 
+#intern {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin-top: -1em;
+  text-align: center;              
+  width: 100%;
+  max-width: 90%;
+}
 ul {
   list-style: none;
   padding: 0;
-  margin: 0.8rem 0;
-  text-align: left;              
+  text-align: center;              
   width: 100%;
   max-width: 90%;
 }
@@ -97,16 +106,6 @@ ul {
 li {
   margin: 0.9rem 0;
   font-size: clamp(1.1rem, 4.5vw, 1.35rem);
-}
-
-.container {
-  margin-top: 1.5rem;
-  width: 100%;
-  max-width: 440px;
-  padding: 1.4rem;
-  border: 2px solid var(--font-color);
-  border-radius: 16px;         
-  background-color: rgba(255,255,255,0.04);
 }
 
 /* Theme switch */
@@ -132,7 +131,7 @@ li {
   fill: var(--font-color);
 }
 
-#theme-switch svg:first-child  { display: none; }
+#theme-switch svg:first-child  { display: none; } 
 .lightmode #theme-switch svg:first-child  { display: block; }
 .lightmode #theme-switch svg:last-child   { display: none; }
 
@@ -173,11 +172,7 @@ p {
     max-width: 640px;
     gap: 1.5rem;
   }
-  
-  .container {
-    padding: 2rem;
-  }
-  
+
   h1 {
     font-size: clamp(2.8rem, 6vw, 4.2rem);
   }

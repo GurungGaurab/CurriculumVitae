@@ -50,12 +50,12 @@
     <p id="hkid-check">Yep thats me</p>
 
     <!-- Qualification section - now properly inside body -->
-    <h1 style="margin-top: 2em;">Qualifications</h1>
+    <h1 style="margin-top: 0.5em;">Qualifications</h1>
 
     <section class="Qualification">
-        <h2 style="text-decoration: underline;">Education</h2>
+        <h2 style="text-decoration: underline; margin-top: 1em;">Education</h2>
 
-        <div class="edu-item">
+        <div class="edu-item" style="margin-top: 1em;">
             <strong>University of Wollongong</strong> <span class="date">2025 – Current</span>
             <div class="degree">Bachelor of Science in Computer Science</div>
 
@@ -63,23 +63,23 @@
                 Semester 1 (Result): <span id="ddl" onclick="getResult()">▼</span>
             </p>
             <div id="Results" style="display: none;">
-                <p>CSCI35 - Database Systems: Distinction</p>
-                <p>CSIT128 - Introduction to Web Technology: Distinction</p>
-                <p>CSIT214 - IT Project Management: Credit</p>
-                <p>CSIT226 - Human Computer Interaction: Distinction</p>
+                <p>CSCI35 - Database Systems: <span style = "text-decoration: underline;">Distinction</span></p>
+                <p>CSIT128 - Introduction to Web Technology: <span style = "text-decoration: underline;">Distinction</span></p>
+                <p>CSIT214 - IT Project Management: <span style = "text-decoration: underline;">Credit</span></p>
+                <p>CSIT226 - Human Computer Interaction: <span style = "text-decoration: underline;">Distinction</span></p>
             </div>
         </div>
 
-        <div class="edu-item">
+        <div class="edu-item" style = "margin-top: 2em;">
             <strong>IVE (Haking Wong)</strong> <span class="date">2019 – 2021</span>
             <div class="degree">Higher Diploma in Computer Engineering</div>
         </div>
 
         <h2 style="text-decoration: underline; margin-top: 2em;">Internship and Jobs</h2>
 
-        <div class="job-item">
-            <strong>HKEVPower</strong> <span class="date">Dec 2018 – May 2019</span>
-            <ul>
+        <div class="job-item" style="margin-top: 1em;">
+            <span class="date"><strong>HKEVPower </strong>Dec 2018 – May 2019<span id="ddl" onclick="getJob()">▼</span></span>
+            <ul id = "intern">
                 <li>Internship Through IVE</li>
                 <li>Worked as a Field Engineer, helping install and maintain EV Charging Stations</li>
                 <li>Received good recommendation letter and was offered summer job</li>

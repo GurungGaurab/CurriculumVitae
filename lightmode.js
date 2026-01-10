@@ -55,3 +55,11 @@ function verifyID(){
             result.style.display= "none";
         }
     }
+    function getJob(){
+        const intern = document.getElementById("intern");
+    if (intern.style.display === "none" || intern.style.display ===""){
+        intern.style.display ="block";}
+        else{
+            intern.style.display= "none";
+        }
+    }
