@@ -29,6 +29,7 @@ function toggleText() {
         }
     }
 
+
 function verifyID(){
     const id = document.getElementById("hkid").value;
     const message = document.getElementById("hkid-check");
@@ -45,3 +46,12 @@ function verifyID(){
         
     }
     document.getElementById('hkid').addEventListener('input', verifyID);
+
+    function getResult(){
+        const result = document.getElementById("Results");
+    if (result.style.display === "none" || result.style.display ===""){
+        result.style.display ="block";}
+        else{
+            result.style.display= "none";
+        }
+    }
