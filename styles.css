@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,14 +24,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem 1.2rem;
+  padding: 1.5rem 1.2rem;         
   text-align: center;
 }
 
-
 #image {
-  margin-top: 2rem;
-  width: clamp(140px, 30vw, 180px);
+  margin-top: 2.5rem;
+  width: clamp(140px, 35vw, 190px);  
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
@@ -54,43 +52,61 @@ body {
   60%  { transform: rotate(0deg); } 
   100% { transform: rotate(0deg); }
 }
-
-
+.about-me h2 {
+    text-align: left;
+      
+}
 main, #main {
-  margin-top: 1.5rem;
+  margin-top: 1.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
+  gap: 1.2rem;                   
   width: 100%;
   max-width: 480px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1rem;               
 }
 
-
 h1 {
-  font-size: clamp(2rem, 8vw, 3.4rem);
-  margin-bottom: 0.4rem;
+  font-size: clamp(2.2rem, 9vw, 3.6rem);
+  margin-bottom: 0.5rem;
   line-height: 1.1;
+  word-break: break-word;        
 }
 
 .me,
 .contact-info,
 .About-me {
-  font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+  font-size: clamp(1.2rem, 5vw, 1.5rem);
   line-height: 1.4;
-  margin: 0.3rem 0;
+  margin: 0.4rem 0;
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0;
+  text-align: left;              
+  width: 100%;
+  max-width: 90%;
+}
+
+li {
+  margin: 0.9rem 0;
+  font-size: clamp(1.1rem, 4.5vw, 1.35rem);
 }
 
 .container {
   margin-top: 1.5rem;
   width: 100%;
-  max-width: 420px;
-  padding: 1.2rem;
+  max-width: 440px;
+  padding: 1.4rem;
   border: 2px solid var(--font-color);
-  border-radius: 12px;
-  background-color: rgba(255,255,255,0.05);
+  border-radius: 16px;         
+  background-color: rgba(255,255,255,0.04);
 }
 
 /* Theme switch */
@@ -98,8 +114,8 @@ h1 {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: var(--background-color);
   border: 1px solid var(--font-color);
@@ -111,26 +127,25 @@ h1 {
 }
 
 #theme-switch svg {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   fill: var(--font-color);
 }
-
 
 #theme-switch svg:first-child  { display: none; }
 .lightmode #theme-switch svg:first-child  { display: block; }
 .lightmode #theme-switch svg:last-child   { display: none; }
 
-
 p {
-  margin: 0.4rem 0;
-  line-height: 1.45;
+  margin: 0.5rem 0;
+  line-height: 1.5;
 }
 
 #clickable {
   cursor: pointer;
-  color: #bb86fc;           /* nice purple that works in both modes */
+  color: #a78bfa;                
   text-decoration: underline;
+  font-weight: 500;
 }
 
 #verify,
@@ -138,8 +153,7 @@ p {
   display: none;
 }
 
-/* media queries */
-
+/* Media Queries */
 @media (min-width: 500px) {
   main, #main {
     max-width: 520px;
@@ -148,7 +162,7 @@ p {
 
 @media (min-width: 768px) {
   body {
-    padding: 2rem;
+    padding: 2.5rem;
   }
   
   #image {
@@ -156,20 +170,21 @@ p {
   }
   
   main, #main {
-    max-width: 620px;
+    max-width: 640px;
+    gap: 1.5rem;
   }
   
   .container {
-    padding: 1.8rem;
+    padding: 2rem;
   }
   
   h1 {
-    font-size: clamp(2.8rem, 6vw, 4rem);
+    font-size: clamp(2.8rem, 6vw, 4.2rem);
   }
 }
 
 @media (min-width: 1024px) {
   main, #main {
-    max-width: 720px;
+    max-width: 760px;
   }
 }
