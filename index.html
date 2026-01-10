@@ -28,7 +28,7 @@
 
     <!-- About / Bio section -->
     <section class="about-me">
-        <h2>I'm a:</h2>
+        <h2 style ='margin-left: 2em;'>I'm a:</h2>
         <ul class="bio-list">
             <li>CS Student</li>
             <li>Avid Gamer</li>
@@ -71,8 +71,14 @@
         </div>
 
         <div class="edu-item" style = "margin-top: 2em;">
-            <strong>IVE (Haking Wong)</strong> <span class="date">2019 – 2021</span>
-            <div class="degree">Higher Diploma in Computer Engineering</div>
+            <strong>IVE (Haking Wong)</strong> <span class="date">2019 – 2021<span id="ddl" onclick="ive()">▼</span></span>
+            <div class="degree">Higher Diploma in Computer Engineering
+                <div id = "ive" style = "display: none;">
+                <p>VTC Student Development Scholarship 2017/2018</p>
+                <p>Internation Seminar on Sustainable Technology (ISTS), Innovation Award </p>
+                <p>Outstanding Student Award (SWPD) Programme</p>
+                </div>
+            </div>
         </div>
 
         <h2 style="text-decoration: underline; margin-top: 2em;">Internship and Jobs</h2>
@@ -85,6 +91,21 @@
                 <li>Received good recommendation letter and was offered summer job</li>
             </ul>
         </div>
+        <div class="job2" style="margin-top: 1em;">
+            <span class="date"><strong>Fratelli's </strong>Jan 2023 – May 2024<span id="ddl" onclick="getJob2()">▼</span></span>
+            <ul id = "fratelli">
+                <li>Supervised the Staff at Fratelli's </li>
+                <li>Worked on the Menu at Semi-fine Dining</li>
+                <li>Training the Staff</li>
+                <li>Led the team to have 4.0/5 rating</li>
+            </ul>
+        </div>
+        <h2 style="text-decoration: underline; margin-top: 2em;">Skills</h2>
+        <p>Python</p>
+        <p>Postgres SQL</p>
+        <p>C++</p>
+        <p>HTML/CSS/JavaScript</p>
+        <p>Microsoft</p>
     </section>
     </body>
     </html>

@@ -63,3 +63,20 @@ function verifyID(){
             intern.style.display= "none";
         }
     }
+          function getJob2(){
+        const secondJob = document.getElementById("fratelli");
+    if (secondJob.style.display === "none" || secondJob.style.display ===""){
+        secondJob.style.display ="block";}
+        else{
+            secondJob.style.display= "none";
+        }
+    }
+        function ive(){
+            const ive = document.getElementById("ive");
+              if (ive.style.display === "none" || ive.style.display ===""){
+        ive.style.display ="block";}
+        else{
+            ive.style.display= "none";
+        }
+        }
+    

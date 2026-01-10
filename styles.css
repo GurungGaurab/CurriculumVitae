@@ -56,7 +56,7 @@ body {
     text-align: left;
       
 }
-main, #main, .job-item{
+main, #main, .job-item, .job2{
   margin-top: 1.8rem;
   display: flex;
   flex-direction: column;
@@ -86,7 +86,7 @@ h1 {
 }
 
 
-#intern{ /* Internship list*/
+#intern, #fratelli{ /* Internship list*/
   display: none;
   list-style: none;
   padding: 0;
@@ -109,7 +109,7 @@ ul /* list */{
 
 li {
   margin: 0.9rem 0;
-  font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+  font-size: clamp(1.0rem, 1vw, 1.35rem);
 }
 
 /* Theme switch */
@@ -133,6 +133,9 @@ li {
   width: 30px;
   height: 30px;
   fill: var(--font-color);
+}
+.bio-list li {
+  font-size: 1.5vw;
 }
 
 #theme-switch svg:first-child  { display: none; } 
