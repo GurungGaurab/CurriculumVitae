@@ -5,113 +5,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Gurung Gaurab CV</title>
-    <script src="lightmode.js" defer></script>
 </head>
 <body>
+    <main class="page-shell">
+        <section class="hero">
+            <img id="image" src="template.jpeg" alt="Gaurab Gurung">
 
-    <img id="image" src="template.jpeg" alt="Gaurab Gurung">
+            <h1>Gaurab Gurung</h1>
+            <p class="hero-subtitle">Computer Science Student</p>
 
-    <h1>
-        <span class="wave-hand">👋</span> Hello! I'm Gaurab Gurung
-    </h1>
+            <ul class="hero-tags">
+                <li>Avid Gamer</li>
+                <li>Hiking Enthusiast</li>
+                <li>Problem Solver</li>
+            </ul>
 
-    <!-- About / Bio section -->
-    <section class="about-me">
-        <h2>I'm a:</h2>
-        <ul class="bio-list">
-            <li>CS Student</li>
-            <li>Avid Gamer</li>
-            <li>Hiking Enthusiast</li>
-        </ul>
-    </section>
-
-    <section class="contact-info">
-        <p>You can email me <a id="clickable" href="https://mail.google.com/mail/?view=cm&fs=1&to=gg373@uowmail.edu.au" target="_blank"><i>&lt;here&gt;</i></a></p>
-        <p>Access my github <a id="clickable" href="https://github.com/GurungGaurab" target="_blank"><i>&lt;here&gt;</i></a></p>
-    </section>
-
-    <section id="verify">
-        <label for="hkid">Please enter the first 4 digits of my HKID</label>
-        <input type="text" name="hkid" id="hkid" placeholder="A123" maxlength="4">
-    </section>
-
-    <p id="hkid-check">Yep thats me</p>
-
-    <!-- Qualification section - now properly inside body -->
-    <h1 class="section-title">Qualifications</h1>
-
-    <section class="Qualification">
-        <h2 class="subheading">Education</h2>
-
-        <div class="edu-item">
-            <strong>University of Wollongong</strong> <span class="date">2025 – Current</span>
-            <div class="degree">Bachelor of Science in Computer Science</div>
-
-            <p class="results-title">
-                Semester 1 (Result): <a id="ddl" onclick = "getResult()">▼<a></a>
-            </p>
-            <div id="Results" style="display: none;">
-                <p>CSCI35 - Database Systems: <span style = "text-decoration: underline;">Distinction</span></p>
-                <p>CSIT128 - Introduction to Web Technology: <span style = "text-decoration: underline;">Distinction</span></p>
-                <p>CSIT214 - IT Project Management: <span style = "text-decoration: underline;">Credit</span></p>
-                <p>CSIT226 - Human Computer Interaction: <span style = "text-decoration: underline;">Distinction</span></p>
+            <div class="hero-links">
+                <a class="hero-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=gg373@uowmail.edu.au" target="_blank" rel="noreferrer">Email Me</a>
+                <a class="hero-link" href="https://github.com/GurungGaurab" target="_blank" rel="noreferrer">GitHub</a>
+                <a class="hero-link" href="IMG_1577.pdf" target="_blank" rel="noreferrer">Reference Letter</a>
             </div>
+        </section>
 
-            <p class="results-title">
-                Semester 2 (Result): <a id="ddl" onclick = "getResult2()">▼<a></a>
-            </p>
-            <div id="Results2" style="display: none;">
-                <p>CSCI251 - Advanced Programming: <span style = "text-decoration: underline;">Distinction</span></p>
-                <p>CSCI334 - Software Design: <span style = "text-decoration: underline;">Distinction</span></p>
-                <p>CSIT314 - Software Development Methodologies: <span style = "text-decoration: underline;">Distinction</span></p>
-            </div>
+        <section class="content-grid desktop-layout">
+            <section class="content-section">
+                <h2>Education</h2>
 
-            <p class="results-title">
-                Semester 3 - On Going
-            </p>
-        </div>
+                <article class="entry-block">
+                    <div class="entry-top">
+                        <h3>University of Wollongong</h3>
+                        <span class="entry-date">2025 - Current</span>
+                    </div>
+                    <p class="entry-subtitle">Bachelor of Science in Computer Science</p>
 
-        <div class="edu-item extra-space">
-            <strong>IVE (Haking Wong)</strong> <span class="date">2019 – 2021<span id="ddl" onclick="ive()">▼</span></span>
-            <div class="degree">Higher Diploma in Computer Engineering
-                <div id = "ive" style = "display: none;">
-                <p>VTC Student Development Scholarship 2017/2018</p>
-                <p>Internation Seminar on Sustainable Technology (ISTS), Innovation Award </p>
-                <p>Outstanding Student Award (SWPD) Programme</p>
+                    <div class="semester-grid">
+                        <div>
+                            <p class="mini-heading">Semester 1 (Result)</p>
+                            <ul class="detail-list">
+                                <li>CSCI35 - Database Systems: Distinction</li>
+                                <li>CSIT128 - Introduction to Web Technology: Distinction</li>
+                                <li>CSIT214 - IT Project Management: Credit</li>
+                                <li>CSIT226 - Human Computer Interaction: Distinction</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <p class="mini-heading">Semester 2 (Result)</p>
+                            <ul class="detail-list">
+                                <li>CSCI251 - Advanced Programming: Distinction</li>
+                                <li>CSCI334 - Software Design: Distinction</li>
+                                <li>CSIT314 - Software Development Methodologies: Distinction</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <p class="mini-heading">Semester 3</p>
+                            <p class="semester-status">On Going</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="entry-block">
+                    <div class="entry-top">
+                        <h3>IVE (Haking Wong)</h3>
+                        <span class="entry-date">2019 - 2021</span>
+                    </div>
+                    <p class="entry-subtitle">Higher Diploma in Computer Engineering</p>
+                    <ul class="detail-list compact-list">
+                        <li>VTC Student Development Scholarship 2017/2018</li>
+                        <li>International Seminar on Sustainable Technology (ISTS), Innovation Award</li>
+                        <li>Outstanding Student Award (SWPD) Programme</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="content-section">
+                <h2>Experience</h2>
+
+                <article class="entry-block">
+                    <div class="entry-top">
+                        <h3>HKEVPower</h3>
+                        <span class="entry-date">Jan 2019 - April 2019</span>
+                    </div>
+                    <p class="entry-subtitle">Internship</p>
+                    <ul class="detail-list compact-list">
+                        <li>Internship Through IVE</li>
+                        <li>Worked as a Field Engineer, helping install and maintain EV Charging Stations</li>
+                        <li>Received good recommendation letter and was offered summer job</li>
+                    </ul>
+                </article>
+
+                <article class="entry-block experience-gap">
+                    <div class="entry-top">
+                        <h3>Amalfitana / Fratelli</h3>
+                        <span class="entry-date">June 2019 - December 2024</span>
+                    </div>
+                    <p class="entry-subtitle">Bar Manager - Repulse Bay, HK</p>
+                    <ul class="detail-list compact-list">
+                        <li>Promoted to Bar Manager from Bar Supervisor based on strong performance and reliability</li>
+                        <li>Managed daily operations in a high-volume restaurant and bar environment</li>
+                        <li>Developed communication, leadership, and problem-solving skills in a fast-paced setting</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="content-section">
+                <h2>Skills</h2>
+                <div class="skill-pills">
+                    <span>Python</span>
+                    <span>SQL</span>
+                    <span>C++</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>SpringBoot</span>
+                    <span>Microsoft Office</span>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <h2 class="subheading extra-space">Internship and Jobs</h2>
+            <section class="content-section">
+                <h2>Reference Letter</h2>
+                <p class="reference-link">
+                    <a href="IMG_1577.pdf" target="_blank" rel="noreferrer">HKEVPower</a>
+                </p>
+            </section>
+        </section>
 
-        <div class="job-item">
-            <span class="date"><strong>HKEVPower </strong>Jan 2019 – April 2019<span id="ddl" onclick="getJob()">▼</span></span>
-            <ul id = "intern">
-                <li>Internship Through IVE</li>
-                <li>Worked as a Field Engineer, helping install and maintain EV Charging Stations</li>
-                <li>Received good recommendation letter and was offered summer job</li>
-            </ul>
-        </div>
-        <div class="job2">
-            <span class="date"><strong>Amalfitana / Fratelli </strong>June 2019 – December 2024<span id="ddl" onclick="getJob2()">▼</span></span>
-            <ul id = "fratelli">
-                <li>Bar Manager - Repulse Bay, HK</li>
-                <li>Promoted to Bar Manager from Bar Supervisor based on strong performance and reliability</li>
-                <li>Managed daily operations in a high-volume restaurant and bar environment</li>
-                <li>Developed communication, leadership, and problem-solving skills in a fast-paced setting</li>
-            </ul>
-        </div>
-        <h2 class="subheading extra-space">Reference Letter</h2>
-        <p>
-            <a id="clickable" href="IMG_1577.pdf" target="_blank">HKEVPower</a>
-        </p>
-        <h2 class="subheading extra-space">Skills</h2>
-        <p>Python</p>
-        <p>SQL</p>
-        <p>C++</p>
-        <p>HTML/CSS/JavaScript</p>
-        <p>SpringBoot</p>
-        <p>Microsoft Office</p>
-    </section>
-    </body>
-    </html>
+        <section class="mobile-layout">
+            <details class="accordion-section">
+                <summary>Education</summary>
+                <div class="accordion-body">
+                    <article class="entry-block">
+                        <div class="entry-top">
+                            <h3>University of Wollongong</h3>
+                            <span class="entry-date">2025 - Current</span>
+                        </div>
+                        <p class="entry-subtitle">Bachelor of Science in Computer Science</p>
+                        <p class="mini-heading">Semester 1 (Result)</p>
+                        <ul class="detail-list compact-list">
+                            <li>CSCI35 - Database Systems: Distinction</li>
+                            <li>CSIT128 - Introduction to Web Technology: Distinction</li>
+                            <li>CSIT214 - IT Project Management: Credit</li>
+                            <li>CSIT226 - Human Computer Interaction: Distinction</li>
+                        </ul>
+                        <p class="mini-heading">Semester 2 (Result)</p>
+                        <ul class="detail-list compact-list">
+                            <li>CSCI251 - Advanced Programming: Distinction</li>
+                            <li>CSCI334 - Software Design: Distinction</li>
+                            <li>CSIT314 - Software Development Methodologies: Distinction</li>
+                        </ul>
+                        <p class="mini-heading ongoing">Semester 3 - On Going</p>
+                    </article>
+
+                    <article class="entry-block">
+                        <div class="entry-top">
+                            <h3>IVE (Haking Wong)</h3>
+                            <span class="entry-date">2019 - 2021</span>
+                        </div>
+                        <p class="entry-subtitle">Higher Diploma in Computer Engineering</p>
+                        <ul class="detail-list compact-list">
+                            <li>VTC Student Development Scholarship 2017/2018</li>
+                            <li>International Seminar on Sustainable Technology (ISTS), Innovation Award</li>
+                            <li>Outstanding Student Award (SWPD) Programme</li>
+                        </ul>
+                    </article>
+                </div>
+            </details>
+
+            <details class="accordion-section">
+                <summary>Experience</summary>
+                <div class="accordion-body">
+                    <article class="entry-block">
+                        <div class="entry-top">
+                            <h3>HKEVPower</h3>
+                            <span class="entry-date">Jan 2019 - April 2019</span>
+                        </div>
+                        <p class="entry-subtitle">Internship</p>
+                        <ul class="detail-list compact-list">
+                            <li>Internship Through IVE</li>
+                            <li>Worked as a Field Engineer, helping install and maintain EV Charging Stations</li>
+                            <li>Received good recommendation letter and was offered summer job</li>
+                        </ul>
+                    </article>
+
+                    <article class="entry-block">
+                        <div class="entry-top">
+                            <h3>Amalfitana / Fratelli</h3>
+                            <span class="entry-date">June 2019 - December 2024</span>
+                        </div>
+                        <p class="entry-subtitle">Bar Manager - Repulse Bay, HK</p>
+                        <ul class="detail-list compact-list">
+                            <li>Promoted to Bar Manager from Bar Supervisor based on strong performance and reliability</li>
+                            <li>Managed daily operations in a high-volume restaurant and bar environment</li>
+                            <li>Developed communication, leadership, and problem-solving skills in a fast-paced setting</li>
+                        </ul>
+                    </article>
+                </div>
+            </details>
+
+            <details class="accordion-section">
+                <summary>Skills</summary>
+                <div class="accordion-body">
+                    <div class="skill-pills">
+                        <span>Python</span>
+                        <span>SQL</span>
+                        <span>C++</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>SpringBoot</span>
+                        <span>Microsoft Office</span>
+                    </div>
+                </div>
+            </details>
+
+            <details class="accordion-section">
+                <summary>Reference Letter</summary>
+                <div class="accordion-body">
+                    <p class="reference-link">
+                        <a href="IMG_1577.pdf" target="_blank" rel="noreferrer">HKEVPower</a>
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2025 Gaurab Gurung</p>
+            <p>Built with passion. Always learning.</p>
+        </footer>
+    </main>
+</body>
+</html>
