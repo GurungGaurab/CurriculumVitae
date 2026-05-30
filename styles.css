@@ -32,10 +32,6 @@ a {
 .page-shell {
   width: min(100%, 1240px);
   margin: 0 auto;
-  border: 1px solid var(--panel-border);
-  border-radius: 2rem;
-  background: linear-gradient(180deg, rgba(11, 23, 56, 0.96), rgba(7, 16, 42, 0.98));
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
   padding: 2rem 1.3rem 1.8rem;
 }
 
@@ -314,7 +310,6 @@ h1 {
 
 @media (max-width: 859px) {
   .page-shell {
-    border-radius: 2.1rem;
     padding-top: 1.8rem;
   }
 
