@@ -1,39 +1,72 @@
-* { /* everything */
+:root {
+  --font-color: #f3f5f9;
+  --muted-color: #b7c2d3;
+  --background-color: #000d21;
+  --accent-color: #a78bfa;
+  --shadow-color: rgba(0, 0, 0, 0.28);
+}
+
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-:root {
-  --font-color: #E0E0E0;
-  --background-color: #000D21;
-}
-
-.lightmode { /* color */
-  --font-color: #000D21;
-  --background-color: #E0E0E0;
-}
-
-body { 
-  background-color: var(--background-color);
+body {
+  background:
+    radial-gradient(circle at top, rgba(167, 139, 250, 0.1), transparent 30%),
+    var(--background-color);
   color: var(--font-color);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
-               'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+               "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem 1.2rem;         
+  padding: 1.25rem;
   text-align: center;
 }
 
+body > * {
+  width: min(100%, 920px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #image {
-  margin-top: 2.5rem;
-  width: clamp(140px, 35vw, 190px);  
+  display: block;
+  margin-top: 1.5rem;
+  width: clamp(150px, 38vw, 220px);
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px var(--shadow-color);
+}
+
+h1 {
+  font-size: clamp(2.3rem, 8vw, 4.6rem);
+  line-height: 1.08;
+  margin-top: 1rem;
+  margin-bottom: 0.7rem;
+  text-wrap: balance;
+  max-width: 12ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+}
+
+p,
+li,
+strong,
+span,
+label,
+input {
+  font-size: clamp(1rem, 2.7vw, 1.1rem);
+}
+
+p {
+  line-height: 1.65;
 }
 
 .wave-hand {
@@ -42,117 +75,64 @@ body {
   animation: wave 2.4s infinite ease-in-out;
 }
 
-@keyframes wave { /* wave animation */
-  0%   { transform: rotate(0deg); }
-  10%  { transform: rotate(14deg); }
-  20%  { transform: rotate(-8deg); }
-  30%  { transform: rotate(14deg); }
-  40%  { transform: rotate(-4deg); }
-  50%  { transform: rotate(10deg); }
-  60%  { transform: rotate(0deg); } 
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
   100% { transform: rotate(0deg); }
 }
-.about-me h2 { 
-    text-align: left;
-      
-}
-main, #main, .job-item, .job2{
-  margin-top: 1.8rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;                   
-  width: 100%;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1rem;               
+
+.about-me,
+.contact-info {
+  padding: 1.25rem 1rem 0;
+  margin-top: 1.2rem;
+  max-width: 640px;
 }
 
-h1 {
-  font-size: clamp(2.2rem, 9vw, 3.6rem);
-  margin-bottom: 0.5rem;
-  line-height: 1.1;
-  word-break: break-word;  
-  margin-top: 1em;      
+.about-me h2 {
+  text-align: center;
+  margin: 0 0 0.8rem;
 }
 
-.me,
-.contact-info,
-.About-me {
-  font-size: clamp(1.2rem, 5vw, 1.5rem);
-  line-height: 1.4;
-  margin: 0.4rem 0;
+.section-title {
+  margin-top: 1rem;
 }
 
+.subheading {
+  text-decoration: underline;
+  margin-top: 1rem;
+}
 
-#intern, #fratelli{ /* Internship list*/
-  display: none;
+.extra-space {
+  margin-top: 2rem;
+}
+
+.bio-list,
+#intern,
+#fratelli,
+#ive {
   list-style: none;
   padding: 0;
-  margin-top: -1em;
-  text-align: center;              
-  width: 100%;
-  max-width: 90%;
-}
-#ddl{
-  cursor: pointer;
 }
 
-ul /* list */{
-  list-style: none;
-  padding: 0;
-  text-align: center;              
-  width: 100%;
-  max-width: 90%;
-}
-
-li {
-  margin: 0.9rem 0;
-  font-size: clamp(1.0rem, 1vw, 1.35rem);
-}
-
-/* Theme switch */
-#theme-switch {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: var(--background-color);
-  border: 1px solid var(--font-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 100;
-}
-
-#theme-switch svg {
-  width: 30px;
-  height: 30px;
-  fill: var(--font-color);
-}
 .bio-list li {
-  font-size: clamp(1.3rem, 1vw, 1.4rem);
+  margin: 0.8rem 0;
+  font-size: clamp(1.15rem, 3.4vw, 1.35rem);
 }
 
-#theme-switch svg:first-child  { display: none; } 
-.lightmode #theme-switch svg:first-child  { display: block; }
-.lightmode #theme-switch svg:last-child   { display: none; }
-
-p {
-  margin: 0.5rem 0;
-  line-height: 1.5;
+.contact-info p + p {
+  margin-top: 0.55rem;
 }
-
 
 #clickable {
   cursor: pointer;
-  color: #a78bfa;                
+  color: var(--accent-color);
   text-decoration: underline;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 #verify,
@@ -160,34 +140,119 @@ p {
   display: none;
 }
 
-/* Media Queries */
-@media (min-width: 500px) {
-  main, #main {
-    max-width: 520px;
-  }
+.Qualification {
+  margin-top: 1rem;
+  padding: 1.35rem 1rem 1.6rem;
+  text-align: center;
+  max-width: 760px;
 }
 
-@media (min-width: 768px) {
+.Qualification h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.edu-item,
+.job-item,
+.job2 {
+  margin-top: 1.2rem;
+  padding: 1rem 0;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.date {
+  display: inline-block;
+  margin-top: 0.3rem;
+  color: var(--muted-color);
+}
+
+.degree {
+  margin-top: 0.45rem;
+}
+
+.results-title {
+  margin-top: 0.85rem;
+  font-weight: 600;
+}
+
+#Results,
+#Results2,
+#intern,
+#fratelli,
+#ive {
+  display: none;
+  margin-top: 0.8rem;
+  padding: 0.85rem 0 0.2rem;
+}
+
+#Results p,
+#Results2 p,
+#ive p,
+#intern li,
+#fratelli li {
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+#Results p:first-child,
+#Results2 p:first-child,
+#ive p:first-child,
+#intern li:first-child,
+#fratelli li:first-child {
+  margin-top: 0;
+}
+
+#ddl {
+  cursor: pointer;
+  margin-left: 0.25rem;
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+.Qualification > p {
+  margin-top: 0.7rem;
+}
+
+@media (min-width: 720px) {
   body {
-    padding: 2.5rem;
-  }
-  
-  #image {
-    width: clamp(180px, 22vw, 240px);
-  }
-  
-  main, #main {
-    max-width: 640px;
-    gap: 1.5rem;
+    padding: 2.25rem;
   }
 
-  h1 {
-    font-size: clamp(2.8rem, 6vw, 4.2rem);
+  .about-me,
+  .contact-info,
+  .Qualification {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .Qualification {
+    padding-top: 1.8rem;
+    padding-bottom: 2rem;
+  }
+
+  .edu-item,
+  .job-item,
+  .job2 {
+    padding: 1.2rem 0;
+  }
+
+  .contact-info p + p {
+    margin-top: 0;
   }
 }
 
-@media (min-width: 1024px) {
-  main, #main {
-    max-width: 760px;
+@media (min-width: 960px) {
+  body {
+    padding: 3rem 2rem 4rem;
+  }
+
+  #image {
+    width: 220px;
+  }
+
+  .about-me {
+    max-width: 640px;
   }
 }

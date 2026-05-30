@@ -1,25 +1,3 @@
-let lightmode = localStorage.getItem('lightmode');
-const themeSwitch = document.getElementById("theme-switch");
-
-
-
-const enableLightmode = () => {
-    document.body.classList.add('lightmode');
-    localStorage.setItem('lightmode', 'active');
-}
-
-const disableLightmode = () => {
-    document.body.classList.remove('lightmode');
-    localStorage.setItem('lightmode', null);
-
-}
-if (lightmode === "active") enableLightmode()
-
-themeSwitch.addEventListener("click", () => {
-    lightmode = localStorage.getItem('lightmode');
-    lightmode !=="active" ? enableLightmode() : disableLightmode()
-})
-
 function toggleText() {
     const verify = document.getElementById("verify");
     if (verify.style.display === "none" || verify.style.display ===""){
@@ -53,6 +31,14 @@ function verifyID(){
         result.style.display ="block";}
         else{
             result.style.display= "none";
+        }
+    }
+    function getResult2(){
+        const result2 = document.getElementById("Results2");
+    if (result2.style.display === "none" || result2.style.display ===""){
+        result2.style.display ="block";}
+        else{
+            result2.style.display= "none";
         }
     }
     function getJob(){
