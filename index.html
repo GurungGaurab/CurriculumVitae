@@ -1,237 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Gurung Gaurab CV</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaurab Gurung</title>
+<style>
+:root{
+  --bg:#070f28;--bg2:#0a1234;--line:rgba(255,255,255,.09);
+  --text:#f3f3f8;--muted:#9aa1bd;--accent:#a78bfa;--accent-soft:rgba(167,139,250,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;color:var(--text);line-height:1.6;
+  font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
+  background:radial-gradient(700px 360px at 50% -40px,rgba(167,139,250,.16),transparent 70%),linear-gradient(180deg,var(--bg2),var(--bg));
+  padding:0 clamp(1.2rem,5vw,2rem) 4rem;}
+.wrap{width:min(100%,760px);margin:0 auto}
+
+.hero{text-align:center;padding:clamp(3rem,8vw,5rem) 0 3rem}
+.hero img{width:clamp(130px,28vw,168px);aspect-ratio:1;object-fit:cover;border-radius:50%;
+  border:3px solid var(--accent);box-shadow:0 0 0 7px rgba(167,139,250,.12)}
+.hero h1{font-size:clamp(2.6rem,8vw,4.6rem);font-weight:700;letter-spacing:-.035em;margin-top:1.3rem;line-height:1}
+.hero .role{color:var(--accent);font-size:clamp(1.2rem,3.6vw,1.9rem);margin-top:.6rem}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.3rem;margin-top:1rem;color:var(--muted);font-size:.98rem}
+.tags li{list-style:none;position:relative}
+.tags li+li::before{content:"|";position:absolute;left:-.75rem;color:var(--line)}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin-top:1.6rem}
+.links a{color:var(--accent);text-decoration:none;font-size:1.02rem}
+.links a:hover{text-decoration:underline;text-underline-offset:3px}
+
+section{margin-top:3rem}
+.label{font-size:.8rem;text-transform:uppercase;letter-spacing:.22em;color:var(--accent);text-align:center;margin-bottom:2rem}
+
+.tl{position:relative;padding-left:1.7rem}
+.tl::before{content:"";position:absolute;left:5px;top:.4rem;bottom:.4rem;width:2px;background:var(--line)}
+.item{position:relative;padding-bottom:2.2rem}
+.item:last-child{padding-bottom:0}
+.item::before{content:"";position:absolute;left:-1.7rem;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(167,139,250,.18)}
+.item .date{color:var(--muted);font-size:.85rem}
+.item h3{font-size:1.08rem;margin-top:.1rem}
+.item .sub{color:var(--accent);font-style:italic;font-size:.95rem;margin-top:.15rem}
+.item ul{list-style:none;margin-top:.55rem;display:grid;gap:.3rem}
+.item ul li{padding-left:1.05rem;position:relative;color:#dadeec;font-size:.95rem}
+.item ul li::before{content:"–";position:absolute;left:0;color:var(--muted)}
+
+.proj{display:block;text-decoration:none;color:inherit;padding:1.1rem 0;transition:.16s}
+.proj+.proj{border-top:1px solid var(--line)}
+.proj:first-of-type{padding-top:0}
+.proj .pt{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.proj h3{font-size:1.02rem}.proj .arrow{color:var(--accent);transition:.16s}
+.proj:hover h3{text-decoration:underline;text-underline-offset:3px}
+.proj:hover .arrow{transform:translateX(3px)}
+.proj p{color:var(--muted);font-size:.92rem;margin-top:.35rem}
+.proj .stack{margin-top:.6rem;font-size:.78rem;color:var(--accent)}
+
+.pills{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+.pills span{border:1px solid var(--line);background:var(--accent-soft);border-radius:999px;padding:.5rem 1rem;font-size:.9rem}
+footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3.5rem}
+</style>
 </head>
 <body>
-    <main class="page-shell">
-        <section class="hero">
-            <img id="image" src="template.jpeg" alt="Gaurab Gurung">
+<div class="wrap">
+  <header class="hero">
+    <img src="template.jpeg" alt="Gaurab Gurung">
+    <h1>Gaurab Gurung</h1>
+    <p class="role">Aspiring Data Engineer</p>
+    <ul class="tags"><li>Data Engineering</li><li>SQL</li><li>Python</li></ul>
+    <div class="links">
+      <a href="mailto:gg373@uowmail.edu.au">Email Me</a>
+      <a href="https://github.com/GurungGaurab" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="IMG_1577.pdf" target="_blank" rel="noreferrer">Reference Letter</a>
+    </div>
+  </header>
 
-            <h1>Gaurab Gurung</h1>
-            <p class="hero-subtitle">Computer Science Student</p>
+  <section>
+    <div class="label">Projects</div>
+    <a class="proj" href="https://github.com/GurungGaurab/hk-weather" target="_blank" rel="noreferrer"><div class="pt"><h3>Is Hong Kong Getting Hotter?</h3><span class="arrow">↗</span></div><p>Cleaned and analysed 20 years of Hong Kong Observatory records to test whether the city is warming. The annual mean temperature rose about 1°C from 2006 to 2025, faster than the global average.</p><div class="stack">Python · pandas · matplotlib</div></a>
+    <a class="proj" href="https://github.com/GurungGaurab/CurriculumVitae" target="_blank" rel="noreferrer"><div class="pt"><h3>This Website</h3><span class="arrow">↗</span></div><p>My personal CV site, built by hand with plain HTML and CSS. Source is on GitHub.</p><div class="stack">HTML · CSS</div></a>
+  </section>
 
-            <ul class="hero-tags">
-                <li>Avid Gamer</li>
-                <li>Hiking Enthusiast</li>
-                <li>Problem Solver</li>
-            </ul>
+  <section>
+    <div class="label">Education</div>
+    <div class="tl">
+      <div class="item">
+        <p class="date">2025 – Current</p>
+        <h3>University of Wollongong</h3>
+        <p class="sub">BSc Computer Science</p>
+        <ul><li>Distinctions in Database Systems (CSCI235), Web Tech, HCI, Advanced Programming &amp; Software Design</li><li>IT Project Management — Credit · Semester 3 ongoing</li></ul>
+      </div>
+      <div class="item">
+        <p class="date">2019 – 2021</p>
+        <h3>IVE (Haking Wong)</h3>
+        <p class="sub">Higher Diploma in Computer Engineering</p>
+        <ul><li>VTC Student Development Scholarship</li><li>ISTS Innovation Award · Outstanding Student Award (SWPD)</li></ul>
+      </div>
+    </div>
+  </section>
 
-            <div class="hero-links">
-                <a class="hero-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=gg373@uowmail.edu.au" target="_blank" rel="noreferrer">Email Me</a>
-                <a class="hero-link" href="https://github.com/GurungGaurab" target="_blank" rel="noreferrer">GitHub</a>
-                <a class="hero-link" href="IMG_1577.pdf" target="_blank" rel="noreferrer">Reference Letter</a>
-            </div>
-        </section>
+  <section>
+    <div class="label">Experience</div>
+    <div class="tl">
+      <div class="item">
+        <p class="date">Jun 2019 – Dec 2024</p>
+        <h3>Amalfitana / Fratelli</h3>
+        <p class="sub">Bar Manager — Repulse Bay, HK</p>
+        <ul><li>Promoted from Supervisor to Manager on performance and reliability</li><li>Ran daily operations in a high-volume restaurant and bar</li><li>Built leadership and problem-solving in a fast-paced setting</li></ul>
+      </div>
+      <div class="item">
+        <p class="date">Jan 2019 – Apr 2019</p>
+        <h3>HKEVPower</h3>
+        <p class="sub">Field Engineer Intern (via IVE)</p>
+        <ul><li>Installed and maintained EV charging stations on site</li><li>Earned a strong reference and a summer job offer</li></ul>
+      </div>
+    </div>
+  </section>
 
-        <section class="content-grid desktop-layout">
-            <section class="content-section">
-                <h2>Education</h2>
+  <section>
+    <div class="label">Skills</div>
+    <div class="pills"><span>SQL</span><span>Python</span><span>Pandas</span><span>C++</span><span>JavaScript</span><span>Spring Boot</span><span>CSS</span><span>Microsoft Office</span></div>
+  </section>
 
-                <article class="entry-block">
-                    <div class="entry-top">
-                        <h3>University of Wollongong</h3>
-                        <span class="entry-date">2025 - Current</span>
-                    </div>
-                    <p class="entry-subtitle">Bachelor of Science in Computer Science</p>
-
-                    <div class="semester-grid">
-                        <div>
-                            <p class="mini-heading">Semester 1 (Result)</p>
-                            <ul class="detail-list">
-                                <li>CSCI35 - Database Systems: Distinction</li>
-                                <li>CSIT128 - Introduction to Web Technology: Distinction</li>
-                                <li>CSIT214 - IT Project Management: Credit</li>
-                                <li>CSIT226 - Human Computer Interaction: Distinction</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <p class="mini-heading">Semester 2 (Result)</p>
-                            <ul class="detail-list">
-                                <li>CSCI251 - Advanced Programming: Distinction</li>
-                                <li>CSCI334 - Software Design: Distinction</li>
-                                <li>CSIT314 - Software Development Methodologies: Distinction</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <p class="mini-heading">Semester 3</p>
-                            <p class="semester-status">On Going</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="entry-block">
-                    <div class="entry-top">
-                        <h3>IVE (Haking Wong)</h3>
-                        <span class="entry-date">2019 - 2021</span>
-                    </div>
-                    <p class="entry-subtitle">Higher Diploma in Computer Engineering</p>
-                    <ul class="detail-list compact-list">
-                        <li>VTC Student Development Scholarship 2017/2018</li>
-                        <li>International Seminar on Sustainable Technology (ISTS), Innovation Award</li>
-                        <li>Outstanding Student Award (SWPD) Programme</li>
-                    </ul>
-                </article>
-            </section>
-
-            <section class="content-section">
-                <h2>Experience</h2>
-
-                <article class="entry-block">
-                    <div class="entry-top">
-                        <h3>HKEVPower</h3>
-                        <span class="entry-date">Jan 2019 - April 2019</span>
-                    </div>
-                    <p class="entry-subtitle">Internship</p>
-                    <ul class="detail-list compact-list">
-                        <li>Internship Through IVE</li>
-                        <li>Worked as a Field Engineer, helping install and maintain EV Charging Stations</li>
-                        <li>Received good recommendation letter and was offered summer job</li>
-                    </ul>
-                </article>
-
-                <article class="entry-block experience-gap">
-                    <div class="entry-top">
-                        <h3>Amalfitana / Fratelli</h3>
-                        <span class="entry-date">June 2019 - December 2024</span>
-                    </div>
-                    <p class="entry-subtitle">Bar Manager - Repulse Bay, HK</p>
-                    <ul class="detail-list compact-list">
-                        <li>Promoted to Bar Manager from Bar Supervisor based on strong performance and reliability</li>
-                        <li>Managed daily operations in a high-volume restaurant and bar environment</li>
-                        <li>Developed communication, leadership, and problem-solving skills in a fast-paced setting</li>
-                    </ul>
-                </article>
-            </section>
-
-            <section class="content-section">
-                <h2>Skills</h2>
-                <div class="skill-pills">
-                    <span>Python</span>
-                    <span>SQL</span>
-                    <span>C++</span>
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>SpringBoot</span>
-                    <span>Microsoft Office</span>
-                </div>
-            </section>
-
-            <section class="content-section">
-                <h2>Reference Letter</h2>
-                <p class="reference-link">
-                    <a href="IMG_1577.pdf" target="_blank" rel="noreferrer">HKEVPower</a>
-                </p>
-            </section>
-        </section>
-
-        <section class="mobile-layout">
-            <details class="accordion-section">
-                <summary>Education</summary>
-                <div class="accordion-body">
-                    <article class="entry-block">
-                        <div class="entry-top">
-                            <h3>University of Wollongong</h3>
-                            <span class="entry-date">2025 - Current</span>
-                        </div>
-                        <p class="entry-subtitle">Bachelor of Science in Computer Science</p>
-                        <p class="mini-heading">Semester 1 (Result)</p>
-                        <ul class="detail-list compact-list">
-                            <li>CSCI35 - Database Systems: Distinction</li>
-                            <li>CSIT128 - Introduction to Web Technology: Distinction</li>
-                            <li>CSIT214 - IT Project Management: Credit</li>
-                            <li>CSIT226 - Human Computer Interaction: Distinction</li>
-                        </ul>
-                        <p class="mini-heading">Semester 2 (Result)</p>
-                        <ul class="detail-list compact-list">
-                            <li>CSCI251 - Advanced Programming: Distinction</li>
-                            <li>CSCI334 - Software Design: Distinction</li>
-                            <li>CSIT314 - Software Development Methodologies: Distinction</li>
-                        </ul>
-                        <p class="mini-heading ongoing">Semester 3 - On Going</p>
-                    </article>
-
-                    <article class="entry-block">
-                        <div class="entry-top">
-                            <h3>IVE (Haking Wong)</h3>
-                            <span class="entry-date">2019 - 2021</span>
-                        </div>
-                        <p class="entry-subtitle">Higher Diploma in Computer Engineering</p>
-                        <ul class="detail-list compact-list">
-                            <li>VTC Student Development Scholarship 2017/2018</li>
-                            <li>International Seminar on Sustainable Technology (ISTS), Innovation Award</li>
-                            <li>Outstanding Student Award (SWPD) Programme</li>
-                        </ul>
-                    </article>
-                </div>
-            </details>
-
-            <details class="accordion-section">
-                <summary>Experience</summary>
-                <div class="accordion-body">
-                    <article class="entry-block">
-                        <div class="entry-top">
-                            <h3>HKEVPower</h3>
-                            <span class="entry-date">Jan 2019 - April 2019</span>
-                        </div>
-                        <p class="entry-subtitle">Internship</p>
-                        <ul class="detail-list compact-list">
-                            <li>Internship Through IVE</li>
-                            <li>Worked as a Field Engineer, helping install and maintain EV Charging Stations</li>
-                            <li>Received good recommendation letter and was offered summer job</li>
-                        </ul>
-                    </article>
-
-                    <article class="entry-block">
-                        <div class="entry-top">
-                            <h3>Amalfitana / Fratelli</h3>
-                            <span class="entry-date">June 2019 - December 2024</span>
-                        </div>
-                        <p class="entry-subtitle">Bar Manager - Repulse Bay, HK</p>
-                        <ul class="detail-list compact-list">
-                            <li>Promoted to Bar Manager from Bar Supervisor based on strong performance and reliability</li>
-                            <li>Managed daily operations in a high-volume restaurant and bar environment</li>
-                            <li>Developed communication, leadership, and problem-solving skills in a fast-paced setting</li>
-                        </ul>
-                    </article>
-                </div>
-            </details>
-
-            <details class="accordion-section">
-                <summary>Skills</summary>
-                <div class="accordion-body">
-                    <div class="skill-pills">
-                        <span>Python</span>
-                        <span>SQL</span>
-                        <span>C++</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>SpringBoot</span>
-                        <span>Microsoft Office</span>
-                    </div>
-                </div>
-            </details>
-
-            <details class="accordion-section">
-                <summary>Reference Letter</summary>
-                <div class="accordion-body">
-                    <p class="reference-link">
-                        <a href="IMG_1577.pdf" target="_blank" rel="noreferrer">HKEVPower</a>
-                    </p>
-                </div>
-            </details>
-        </section>
-
-        <footer class="site-footer">
-            <p>&copy; 2025 Gaurab Gurung</p>
-        </footer>
-    </main>
+  <footer>© 2026 Gaurab Gurung</footer>
+</div>
 </body>
 </html>
