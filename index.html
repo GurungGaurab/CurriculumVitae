@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gaurab Gurung — Data Engineering Student</title>
-<meta name="description" content="Gaurab Gurung — Computer Science student at the University of Wollongong focused on data engineering. Projects in Python, pandas, and SQL.">
+<title>Gaurab Gurung — Computer Science Graduate</title>
+<meta name="description" content="Gaurab Gurung — Computer Science graduate from the University of Wollongong focused on data engineering. Projects in Python, pandas, and SQL.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23070f28'/%3E%3Ctext x='50' y='68' font-size='52' font-family='sans-serif' font-weight='700' fill='%23a78bfa' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
-<meta property="og:title" content="Gaurab Gurung — Data Engineering Student">
-<meta property="og:description" content="Computer Science student at the University of Wollongong focused on data engineering. Projects in Python, pandas, and SQL.">
+<meta property="og:title" content="Gaurab Gurung — Computer Science Graduate">
+<meta property="og:description" content="Computer Science graduate from the University of Wollongong focused on data engineering. Projects in Python, pandas, and SQL.">
 <meta property="og:image" content="https://hiregarry.com/gaurab.jpg">
 <meta property="og:url" content="https://hiregarry.com">
 <meta property="og:type" content="website">
@@ -46,6 +46,7 @@ section{margin-top:3rem}
 .item::before{content:"";position:absolute;left:-1.7rem;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(167,139,250,.18)}
 .item .date{color:var(--muted);font-size:.85rem}
 .item h3{font-size:1.08rem;margin-top:.1rem}
+.item h3 .metric{display:inline-block;margin-left:.7rem;padding:.08rem .6rem;border-radius:999px;border:1px solid var(--line);background:var(--accent-soft);color:var(--accent);font-size:.78rem;font-weight:500;letter-spacing:.01em;vertical-align:.14em;white-space:nowrap}
 .item .sub{color:var(--accent);font-style:italic;font-size:.95rem;margin-top:.15rem}
 .item ul{list-style:none;margin-top:.55rem;display:grid;gap:.3rem}
 .item ul li{padding-left:1.05rem;position:relative;color:#dadeec;font-size:.95rem}
@@ -75,19 +76,21 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3.5rem}
   <header class="hero">
     <img src="gaurab.jpg" alt="Gaurab Gurung">
     <h1>Gaurab Gurung</h1>
-    <p class="role">Data Engineering Student</p>
+    <p class="role">Computer Science Graduate</p>
     <ul class="tags"><li>Data Engineering</li><li>SQL</li><li>Python</li></ul>
     <div class="links">
       <a href="mailto:gg373@uowmail.edu.au">Email Me</a>
       <a href="https://github.com/GurungGaurab" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/gaurab-gurung-24590b163/" target="_blank" rel="noreferrer">LinkedIn</a>
       <a href="reference-letter.pdf" target="_blank" rel="noreferrer">Reference Letter</a>
+      <a href="dashboard.html">Results</a>
     </div>
   </header>
 
   <section>
     <div class="label">Projects</div>
+    <a class="proj" href="https://github.com/GurungGaurab/UOW_Grade" target="_blank" rel="noreferrer"><div class="pt"><h3>Academic Performance Dashboard</h3><span class="arrow">↗</span></div><p>Modelled my university results as a star schema in Power BI — fact table, three dimensions, DAX measures for credit-weighted WAM. The .pbix and model diagram live in this repo; the interactive rebuild is linked as Results above.</p><div class="stack">Power BI · DAX · Power Query</div></a>
     <a class="proj" href="https://github.com/GurungGaurab/hk-weather" target="_blank" rel="noreferrer"><div class="pt"><h3>Is Hong Kong Getting Hotter?</h3><span class="arrow">↗</span></div><p>Cleaned and analysed 20 years of Hong Kong Observatory records to test whether the city is warming. The annual mean temperature rose about 1°C from 2006 to 2025, faster than the global average.</p><div class="stack">Python · pandas · matplotlib</div></a>
-    <a class="proj" href="https://github.com/GurungGaurab/running_pace_analysis" target="_blank" rel="noreferrer"><div class="pt"><h3>Am I Getting Faster?</h3><span class="arrow">↗</span></div><p>Analysed four months of my own Garmin running data to check if my training was paying off. Cleaned 38 exported activities down to comparable runs and tracked grade-adjusted pace, which trended faster over time.</p><div class="stack">Python · pandas · matplotlib</div></a>
     <a class="proj" href="https://github.com/GurungGaurab/CurriculumVitae" target="_blank" rel="noreferrer"><div class="pt"><h3>This Website</h3><span class="arrow">↗</span></div><p>My personal CV site, built by hand with plain HTML and CSS. Source is on GitHub.</p><div class="stack">HTML · CSS</div></a>
   </section>
 
@@ -95,14 +98,14 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3.5rem}
     <div class="label">Education</div>
     <div class="tl">
       <div class="item">
-        <p class="date">2025 – Current</p>
-        <h3>University of Wollongong</h3>
+        <p class="date">2025 – 2026</p>
+        <h3>University of Wollongong <span class="metric">WAM 77.42</span></h3>
         <p class="sub">BSc Computer Science</p>
-        <ul><li>Semester 1: Database Systems (Distinction), Web Technology (Distinction), Human-Computer Interaction (Distinction), IT Project Management (Credit)</li><li>Semester 2: Advanced Programming (Distinction), Software Design (Distinction), Software Development Methodologies (Distinction)</li><li>Semester 3: in progress</li></ul>
+        <ul><li>Semester 1: Database Systems (Distinction), Introduction to Web Technology (Distinction), Human-Computer Interaction (Distinction), IT Project Management (Credit)</li><li>Semester 2: Advanced Programming (Distinction), Software Development Methodologies (Distinction), Software Design (Distinction)</li><li>Semester 3: Cybersecurity (High Distinction), Capstone Project (Distinction), Big Data Management (Distinction), Cryptography and Secure Applications (Distinction)</li></ul>
       </div>
       <div class="item">
         <p class="date">2019 – 2021</p>
-        <h3>IVE (Haking Wong)</h3>
+        <h3>IVE (Haking Wong) <span class="metric">GPA 3.4</span></h3>
         <p class="sub">Higher Diploma in Computer Engineering</p>
         <ul><li>VTC Student Development Scholarship</li><li>ISTS Innovation Award · Outstanding Student Award (SWPD)</li></ul>
       </div>
