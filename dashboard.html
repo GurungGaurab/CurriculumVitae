@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Performance Dashboard — Gaurab Gurung</title>
+<meta name="description" content="Interactive academic performance dashboard — WAM, trimester breakdown and grade distribution for a BSc Computer Science at the University of Wollongong. Rebuilt in the browser from a Power BI star-schema model.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23070f28'/%3E%3Ctext x='50' y='68' font-size='52' font-family='sans-serif' font-weight='700' fill='%23a78bfa' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Academic Performance Dashboard — Gaurab Gurung">
+<meta property="og:description" content="Interactive dashboard rebuilt from a Power BI star-schema model: WAM, trimester breakdown, grade distribution.">
+<meta property="og:url" content="https://hiregarry.com/dashboard.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://hiregarry.com/og-dashboard.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta property="og:image:alt" content="Dashboard showing a WAM of 77.42, a Distinction grade average, 11 courses, and charts of WAM by trimester and grade distribution.">
+<meta property="og:site_name" content="hiregarry.com">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+  --bg:#070f28;--bg2:#0a1234;--surface:#0d1638;--line:rgba(255,255,255,.09);
+  --text:#f3f3f8;--muted:#9aa1bd;--dim:#6f77985c;
+  --accent:#a78bfa;--accent-soft:rgba(167,139,250,.14);
+  /* ordinal ramp for grade bands — one hue, monotone lightness, validated on --surface */
+  --band-1:#6a55cc;  /* Credit */
+  --band-2:#9280ee;  /* Distinction */
+  --band-3:#c4b5fd;  /* High Distinction */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;color:var(--text);line-height:1.6;
+  font-family:system-ui,"Segoe UI",-apple-system,sans-serif;
+  background:radial-gradient(700px 360px at 50% -40px,rgba(167,139,250,.16),transparent 70%),linear-gradient(180deg,var(--bg2),var(--bg));
+  padding:0 clamp(1.2rem,5vw,2rem) 4rem;}
+.wrap{width:min(100%,1040px);margin:0 auto}
+a{color:var(--accent)}
+
+/* ---------- header ---------- */
+.top{padding:2rem 0 0}
+.back{display:inline-flex;align-items:center;gap:.45rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+.back:hover{color:var(--text)}
+.head{padding:2rem 0 1.6rem;border-bottom:1px solid var(--line)}
+.head h1{font-size:clamp(1.9rem,4.6vw,2.9rem);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.head p{color:var(--muted);margin-top:.7rem;max-width:62ch;font-size:.98rem}
+.head .meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem}
+.head .meta span{border:1px solid var(--line);background:var(--accent-soft);border-radius:999px;padding:.3rem .8rem;font-size:.78rem;color:var(--accent)}
+
+/* ---------- filter row ---------- */
+.filters{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:1.6rem}
+.filters .flabel{font-size:.75rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-right:.2rem}
+.chip{font:inherit;font-size:.85rem;color:var(--muted);background:transparent;border:1px solid var(--line);
+  border-radius:999px;padding:.38rem .85rem;cursor:pointer;transition:.15s;min-height:32px}
+.chip:hover{color:var(--text);border-color:rgba(255,255,255,.24)}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--text)}
+.chip:focus-visible,.bar-btn:focus-visible,th button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.clear{margin-left:auto;font-size:.82rem;color:var(--muted);background:none;border:0;cursor:pointer;font-family:inherit;
+  border-bottom:1px solid transparent;padding:.2rem 0}
+.clear:hover{color:var(--text);border-color:var(--accent)}
+.clear[hidden]{display:none}
+
+/* ---------- kpi ---------- */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:1.6rem}
+.kpi{background:var(--surface);padding:1.4rem 1.3rem}
+.kpi .v{font-size:clamp(1.5rem,4.4vw,2rem);font-weight:650;letter-spacing:-.02em;line-height:1.15;
+  overflow-wrap:break-word}
+.kpi.hero .v{font-size:clamp(2.6rem,7vw,3.4rem);color:var(--accent)}
+.kpi.text .v{font-size:clamp(1.15rem,3.4vw,1.7rem);line-height:1.25}
+.kpi .l{color:var(--muted);font-size:.82rem;margin-top:.2rem}
+
+/* ---------- charts ---------- */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.2rem}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.3rem 1.35rem 1.5rem}
+.card h2{font-size:.98rem;font-weight:600}
+.card .hint{color:var(--muted);font-size:.8rem;margin-top:.15rem}
+
+/* horizontal bars — grid gutter (56px cat + .7rem gap) is shared by bars, axis and threshold */
+.barcard{display:flex;flex-direction:column}
+.hbars{display:grid;gap:1rem}
+.bar-btn{display:grid;grid-template-columns:56px 1fr;align-items:center;gap:.7rem;width:100%;
+  background:none;border:0;padding:.2rem 0;cursor:pointer;font:inherit;color:inherit;text-align:left}
+.bar-btn .cat{color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+.bar-btn .track{position:relative;height:22px}
+.bar-btn .fill{display:block;height:100%;background:var(--accent);border-radius:0 4px 4px 0;
+  transition:width .3s ease,opacity .2s}
+.bar-btn .val{position:absolute;top:50%;transform:translateY(-50%);margin-left:.55rem;
+  font-size:.85rem;font-variant-numeric:tabular-nums;transition:left .3s ease}
+.bar-btn.off .fill{opacity:.28}
+.bar-btn.off .cat,.bar-btn.off .val{color:var(--dim)}
+.bar-btn:hover .fill{filter:brightness(1.12)}
+.plot{position:relative;margin:auto 0;padding-top:1.8rem}
+.thresh{position:absolute;top:1.1rem;bottom:1.7rem;width:0;border-left:1px dashed rgba(167,139,250,.55);
+  pointer-events:none;left:calc(56px + .7rem + (100% - 56px - .7rem) * .75)}
+.thresh span{position:absolute;top:-1.2rem;left:50%;transform:translateX(-50%);white-space:nowrap;
+  font-size:.7rem;color:var(--accent)}
+.xaxis{display:grid;grid-template-columns:56px 1fr;gap:.7rem;margin-top:.7rem}
+.ticks{position:relative;height:1em}
+.ticks span{position:absolute;transform:translateX(-50%);color:var(--muted);font-size:.72rem;
+  font-variant-numeric:tabular-nums}
+
+/* columns */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;align-items:end;height:170px;margin-top:1.6rem;
+  border-bottom:1px solid var(--line)}
+.col-btn{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;
+  background:none;border:0;padding:0;cursor:pointer;font:inherit;color:inherit}
+.col-btn .cap{font-size:.85rem;font-variant-numeric:tabular-nums;margin-bottom:.35rem}
+.col-btn .colfill{width:100%;max-width:56px;background:var(--accent);border-radius:4px 4px 0 0;
+  transition:height .3s ease,opacity .2s;min-height:2px}
+.col-btn.off .colfill{opacity:.26}
+.col-btn.off .cap{color:var(--dim)}
+.col-btn:hover .colfill{filter:brightness(1.12)}
+.collabels{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:.55rem}
+.collabels div{text-align:center;color:var(--muted);font-size:.75rem;line-height:1.25}
+
+/* ---------- table ---------- */
+.tablecard{margin-top:1.2rem;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+caption{text-align:left;font-size:.98rem;font-weight:600;padding-bottom:.2rem}
+th,td{padding:.55rem .6rem;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--muted);font-weight:500;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
+th button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0;letter-spacing:inherit;text-transform:inherit}
+th button:hover{color:var(--text)}
+th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:0}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:.5rem;vertical-align:.02em}
+.empty{color:var(--muted);padding:1.2rem .6rem}
+
+footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3.5rem}
+
+/* ---------- tooltip ---------- */
+#tip{position:fixed;z-index:20;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:#111a3f;border:1px solid var(--line);border-radius:8px;padding:.5rem .7rem;font-size:.8rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.45);max-width:240px}
+#tip b{font-weight:600}
+#tip .tv{color:var(--accent);font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top"><a class="back" href="index.html">← Gaurab Gurung</a></div>
+
+  <header class="head">
+    <h1>Academic Performance Dashboard</h1>
+    <p>My university results modelled as a star schema and reported on — originally built in Power BI while studying for the PL-300, rebuilt here so you can click through it without opening Power BI Desktop. Select a trimester or a grade band to cross-filter everything.</p>
+    <div class="meta"><span>Power BI</span><span>Power Query</span><span>DAX</span><span>Star schema</span></div>
+  </header>
+
+  <div class="filters" role="group" aria-label="Filters">
+    <span class="flabel">Trimester</span>
+    <div id="termChips" style="display:contents"></div>
+    <button class="clear" id="clearBtn" hidden>Clear filters</button>
+  </div>
+
+  <section class="kpis" id="kpis" aria-live="polite"></section>
+
+  <div class="grid">
+    <div class="card barcard">
+      <h2>WAM by trimester</h2>
+      <p class="hint">Credit-weighted average per term. Click a bar to filter.</p>
+      <div class="plot">
+        <div class="thresh"><span>Distinction 75</span></div>
+        <div class="hbars" id="termChart"></div>
+        <div class="xaxis"><span></span><div class="ticks">
+          <span style="left:0%">0</span><span style="left:25%">25</span><span style="left:50%">50</span><span style="left:75%">75</span><span style="left:100%">100</span>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Grade distribution</h2>
+      <p class="hint">Results per award band. Click a column to filter.</p>
+      <div class="cols" id="gradeChart"></div>
+      <div class="collabels" id="gradeLabels"></div>
+    </div>
+  </div>
+
+  <div class="card tablecard">
+    <table>
+      <caption>Results <span id="capCount" style="color:var(--muted);font-weight:400"></span></caption>
+      <thead>
+        <tr>
+          <th><button data-sort="course">Course</button></th>
+          <th><button data-sort="term">Trimester</button></th>
+          <th class="num"><button data-sort="credit">Credits</button></th>
+          <th class="num"><button data-sort="mark">Mark</button></th>
+          <th><button data-sort="grade">Grade</button></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <footer>© 2026 Gaurab Gurung</footer>
+</div>
+
+<div id="tip" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+
+const DATA = [
+  {course:"Database Systems",                    term:"2025-A", mark:78, credit:6},
+  {course:"Introduction to Web Technology",      term:"2025-A", mark:78, credit:6},
+  {course:"Human-Computer Interaction",          term:"2025-A", mark:75, credit:6},
+  {course:"IT Project Management",               term:"2025-A", mark:72, credit:6},
+  {course:"Advanced Programming",                term:"2026-B", mark:80, credit:6},
+  {course:"Software Design",                     term:"2026-B", mark:75, credit:6},
+  {course:"Software Development Methodologies",  term:"2026-B", mark:79, credit:6},
+  {course:"Big Data Management",                 term:"2026-C", mark:76, credit:6},
+  {course:"Capstone Project",                    term:"2026-C", mark:78, credit:12},
+  {course:"Cryptography and Secure Applications",term:"2026-C", mark:75, credit:6},
+  {course:"Cybersecurity",                       term:"2026-C", mark:85, credit:6}
+];
+
+const BANDS = [
+  {name:"Credit",           min:65, color:"var(--band-1)"},
+  {name:"Distinction",      min:75, color:"var(--band-2)"},
+  {name:"High Distinction", min:85, color:"var(--band-3)"}
+];
+const band = m => m>=85 ? "High Distinction" : m>=75 ? "Distinction" : m>=65 ? "Credit" : m>=50 ? "Pass" : "Fail";
+const bandColor = n => (BANDS.find(b=>b.name===n)||{}).color || "var(--muted)";
+const TERMS = [...new Set(DATA.map(d=>d.term))].sort();
+const AXIS_MAX = 100, THRESHOLD = 75;
+
+const wam = rows => {
+  const c = rows.reduce((s,r)=>s+r.credit,0);
+  return c ? rows.reduce((s,r)=>s+r.mark*r.credit,0)/c : 0;
+};
+const wamBand = w => w>=85 ? "High Distinction" : w>=75 ? "Distinction" : w>=65 ? "Credit" : w>=50 ? "Pass" : "—";
+
+let state = {term:null, grade:null, sort:"course", dir:1};
+const rows = () => DATA.filter(d =>
+  (!state.term  || d.term === state.term) &&
+  (!state.grade || band(d.mark) === state.grade));
+
+/* ---------- tooltip ---------- */
+const tip = document.getElementById("tip");
+function showTip(e, html){
+  tip.innerHTML = html; tip.style.opacity = 1;
+  const r = tip.getBoundingClientRect();
+  let x = e.clientX + 14, y = e.clientY - r.height - 12;
+  if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+  if (y < 8) y = e.clientY + 18;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+const hideTip = () => { tip.style.opacity = 0; };
+function bindTip(el, html){
+  el.addEventListener("mousemove", e => showTip(e, html));
+  el.addEventListener("mouseleave", hideTip);
+  el.addEventListener("blur", hideTip);
+  el.addEventListener("focus", () => {
+    const b = el.getBoundingClientRect();
+    showTip({clientX:b.left+b.width/2, clientY:b.top}, html);
+  });
+}
+
+/* ---------- filter chips ---------- */
+const chipWrap = document.getElementById("termChips");
+TERMS.forEach(t => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.textContent = t; b.dataset.term = t;
+  b.setAttribute("aria-pressed","false");
+  b.onclick = () => { state.term = state.term === t ? null : t; render(); };
+  chipWrap.appendChild(b);
+});
+document.getElementById("clearBtn").onclick = () => { state.term = null; state.grade = null; render(); };
+
+/* ---------- renderers ---------- */
+function renderKpis(rs){
+  const w = wam(rs);
+  const cards = [
+    {v: rs.length ? w.toFixed(2) : "—", l:"WAM", cls:"hero"},
+    {v: rs.length ? wamBand(w) : "—",   l:"Grade average", cls:"text"},
+    {v: rs.length,                      l:"Courses taken"},
+    {v: rs.reduce((s,r)=>s+r.credit,0), l:"Credit points"}
+  ];
+  document.getElementById("kpis").innerHTML = cards.map(c =>
+    `<div class="kpi${c.cls?" "+c.cls:""}"><div class="v">${c.v}</div><div class="l">${c.l}</div></div>`).join("");
+}
+
+function renderTermChart(){
+  const host = document.getElementById("termChart");
+  host.innerHTML = "";
+  TERMS.forEach(t => {
+    const sub = DATA.filter(d => d.term === t && (!state.grade || band(d.mark) === state.grade));
+    const w = wam(sub);
+    const dimmed = state.term && state.term !== t;
+    const b = document.createElement("button");
+    b.className = "bar-btn" + (dimmed ? " off" : "");
+    b.setAttribute("aria-pressed", String(state.term === t));
+    const pct = (w / AXIS_MAX * 100).toFixed(2);
+    b.innerHTML = `<span class="cat">${t}</span>
+      <span class="track"><span class="fill" style="width:${pct}%"></span>
+        <span class="val" style="left:${pct}%">${sub.length ? w.toFixed(2) : "—"}</span></span>`;
+    b.onclick = () => { state.term = state.term === t ? null : t; render(); };
+    bindTip(b, `<b>${t}</b><br>WAM <span class="tv">${sub.length ? w.toFixed(2) : "—"}</span><br>
+      ${sub.length} course${sub.length===1?"":"s"} · ${sub.reduce((s,r)=>s+r.credit,0)} credits`);
+    host.appendChild(b);
+  });
+}
+
+function renderGradeChart(){
+  const host = document.getElementById("gradeChart"), labs = document.getElementById("gradeLabels");
+  host.innerHTML = ""; labs.innerHTML = "";
+  const base = DATA.filter(d => !state.term || d.term === state.term);
+  const counts = BANDS.map(bd => base.filter(d => band(d.mark) === bd.name).length);
+  const max = Math.max(...counts, 1);
+  BANDS.forEach((bd, i) => {
+    const n = counts[i], dimmed = state.grade && state.grade !== bd.name;
+    const b = document.createElement("button");
+    b.className = "col-btn" + (dimmed ? " off" : "");
+    b.setAttribute("aria-pressed", String(state.grade === bd.name));
+    b.innerHTML = `<span class="cap">${n}</span>
+      <span class="colfill" style="height:${(n/max*100*0.82).toFixed(1)}%;background:${bd.color}"></span>`;
+    b.onclick = () => { state.grade = state.grade === bd.name ? null : bd.name; render(); };
+    bindTip(b, `<b>${bd.name}</b><br><span class="tv">${n}</span> result${n===1?"":"s"}<br>mark ${bd.min}${i===BANDS.length-1?"+":"–"+(BANDS[i+1].min-1)}`);
+    host.appendChild(b);
+    labs.insertAdjacentHTML("beforeend", `<div>${bd.name.replace(" ","<br>")}</div>`);
+  });
+}
+
+function renderTable(rs){
+  const tb = document.getElementById("tbody");
+  const sorted = [...rs].sort((a,b) => {
+    const k = state.sort;
+    const va = k === "grade" ? a.mark : a[k], vb = k === "grade" ? b.mark : b[k];
+    return (typeof va === "number" ? va - vb : String(va).localeCompare(String(vb))) * state.dir;
+  });
+  tb.innerHTML = sorted.length ? sorted.map(r => {
+    const g = band(r.mark);
+    return `<tr><td>${r.course}</td><td>${r.term}</td><td class="num">${r.credit}</td>
+      <td class="num">${r.mark}</td>
+      <td><span class="dot" style="background:${bandColor(g)}"></span>${g}</td></tr>`;
+  }).join("") : `<tr><td colspan="5" class="empty">No results for this selection.</td></tr>`;
+  document.getElementById("capCount").textContent =
+    rs.length === DATA.length ? `· all ${DATA.length}` : `· ${rs.length} of ${DATA.length}`;
+}
+
+document.querySelectorAll("th button[data-sort]").forEach(btn => {
+  btn.onclick = () => {
+    const k = btn.dataset.sort;
+    state.dir = state.sort === k ? -state.dir : 1;
+    state.sort = k;
+    renderTable(rows());
+  };
+});
+
+function render(){
+  const rs = rows();
+  document.querySelectorAll(".chip[data-term]").forEach(c =>
+    c.setAttribute("aria-pressed", String(state.term === c.dataset.term)));
+  document.getElementById("clearBtn").hidden = !(state.term || state.grade);
+  renderKpis(rs); renderTermChart(); renderGradeChart(); renderTable(rs); hideTip();
+}
+render();
+})();
+</script>
+</body>
+</html>
